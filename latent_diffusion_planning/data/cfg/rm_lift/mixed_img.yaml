@@ -9,8 +9,8 @@ prefetch_factor: 2
 seq_length: ${horizon}
 
 # data paths
-train_paths: [/content/robomimic/datasets/lift/ph/image.hdf5]
-eval_paths: [/content/robomimic/datasets/lift/ph/image.hdf5]
+train_paths: [/content/diffusive-dagger-/latent_diffusion_planning/robomimic/datasets/lift/ph/image.hdf5]
+eval_paths: [/content/diffusive-dagger-/latent_diffusion_planning/robomimic/datasets/lift/ph/image.hdf5]
 train_n_episode_overfit: [150]  # override this!
 eval_n_episode_overfit: 50
 train_split: [1]
