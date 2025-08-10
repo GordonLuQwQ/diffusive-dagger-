@@ -11,7 +11,7 @@ conda env create -f env.yml
 pip install --upgrade "jax[cuda12_pip]==0.4.26" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
 ```
 
-Download the [Robomimic Dataset](https://robomimic.github.io/docs/datasets/robomimic_v0.1.html) and re-render observations at 64x64. Make sure the robosuite version is consistent across dataset generation and policy evaluation. Generate [ALOHA Data](https://github.com/tonyzhaozh/act) via `MUJOGO_GL=egl python3 collect_aloha_scripted_demos.py --task_name sim_transfer_cube_scripted --dataset_path YOUR_PATH --num_episodes NUM_EPISODE`
+Download the [Robomimic Dataset](https://robomimic.github.io/docs/datasets/robomimic_v0.1.html) and re-render observations at 64x64. Make sure the robosuite version is consistent across dataset generation and policy evaluation.
 
 
 ## Data Collection
@@ -46,7 +46,7 @@ python3 train_mixed_bc.py experiment_folder=FOLDER experiment_name=NAME agent=ld
 <img src="imgs/sample.png" alt="DD method" title="DD method">
 
 ## Citation
-We are giving full credit to the paper "Latent Diffusion Planning for Imitation Learning", thanks for their wonderful works. 
+We are giving full credits to the paper "Latent Diffusion Planning for Imitation Learning", Huge thanks to their wonderful works. 
 ```
 @misc{xie2025latentdiffusionplanningimitation,
       title={Latent Diffusion Planning for Imitation Learning}, 
