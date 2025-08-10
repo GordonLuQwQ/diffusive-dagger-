@@ -1,0 +1,56 @@
+defaults:
+  - agent: dagger_agent  
+  - data: cfg/rm_lift/dagger_img  
+
+# experiment
+experiment_folder: test_dagger
+experiment_name: lift_dagger_run1
+
+# train params
+batch_size: 256
+n_workers: 2
+n_grad_steps: 50000  # DAgger 
+log_every_step: 10
+dump_every_step: 200
+warmup_steps: 1000
+lr: 1e-4
+end_lr: 1e-6
+
+# DAgger 
+is_dagger: true  
+dagger_iterations: 10  
+dagger_relabel_episodes: 30  
+dagger_steps_per_iteration: 5000 
+beta_schedule: linear  
+expert_ckpt_path: /home/gordon/latentdiff/latent_diffusion_planning/experiments/lift_task_expert_latent/ldp_baseline/ckpt/1000000.ckpt  ## overwrite
+
+# eval params
+eval_every_step: 1000
+n_eval_episodes: 4
+n_eval_processes: 4
+render_video: true
+n_videos: 1
+save_verbose: true
+
+# data params
+horizon: 16
+obs_horizon: 1
+action_horizon: 8
+idm_horizon: 4
+
+# snapshot
+snapshot_dir: ./ckpt
+save_every_step: 100000  
+restore_snapshot_path: null
+restore_keys: []
+
+# misc
+seed: 1
+save_video: true
+use_tb: true
+use_wandb: true  
+name: train_dagger_lift
+
+hydra:
+  run:
+    dir: ./experiments/${experiment_folder}/${experiment_name}

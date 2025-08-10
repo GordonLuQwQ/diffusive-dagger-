@@ -1,0 +1,54 @@
+# conf/agent/dagger_agent.yaml
+defaults:
+  - encoder: bridge_resnet
+
+_target_: agents.dagger_agent.DAggerAgent
+name: dagger_agent
+
+# DAgger specific parameters
+expert_ckpt_path: ??? # 必须指定专家模型路径
+beta_schedule: linear  # linear, exponential, constant
+dagger_iterations: 10
+
+# Planner configuration (same as DP agent)
+planner:
+  _target_: networks.diffusion_nets_v2.ConditionalUnet1D
+  input_dim: ??? # to be specified later
+  global_cond_dim: ??? # to be specified later
+  diffusion_step_embed_dim: 256
+  down_dims: [256, 512, 1024]
+  kernel_size: 5
+  n_groups: 8
+  downsample: True
+
+# Policy input (reference from data config)
+lowdim_obs: ${data.meta.lowdim_obs}
+rgb_obs: ${data.meta.rgb_obs}
+obs_normalization: ${data.meta.obs_normalization}
+shared_encoder: false
+
+# Policy details (reference from global config)
+obs_horizon: ${obs_horizon}
+pred_horizon: ${horizon}
+action_horizon: ${action_horizon}
+
+# Diffusion parameters
+n_diffusion_steps: 100
+
+# Training parameters (reference from global config)
+lr: ${lr}
+end_lr: ${end_lr}
+warmup_steps: ${warmup_steps}
+decay_steps: ${n_grad_steps}
+
+# Data augmentation
+random_shift: true
+
+# EMA parameters
+use_ema: true
+planner_ema_decay: 0.99
+encoder_ema_decay: 0.99
+
+# VAE parameters (if needed)
+vae_pretrain_path: null
+vae_feature_dim: 256
