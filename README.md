@@ -3,7 +3,7 @@
 ## Method
 <img src="imgs/method.png" alt="DD method" title="DD method">
 
-## Installation (you might need to upgrade the robosuite into the lastest version)
+## Installation (you might need to upgrade the robosuite into the latest version)
 create conda environment:
 
 ```
