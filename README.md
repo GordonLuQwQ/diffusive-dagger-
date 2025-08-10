@@ -30,7 +30,7 @@ python3 train_vae.py experiment_folder=VAE_FOLDER experiment_name=VAE_NAME data=
 ``` 
 
 
-## Processing dataset into latent space though VAE encoder (You might need to overwite the path within in the .yaml file)
+## Processing dataset into latent space though VAE encoder (You might need to overwrite the path within in the .yaml file)
 ```
 python3 process_sdvae_data.py experiment_folder=FOLDER experiment_name=NAME data=cfg/rm_lift/img data.train_path=DATA_PATH restore_snapshot_path=PATH_TO_VAE_CKPT
 ```
