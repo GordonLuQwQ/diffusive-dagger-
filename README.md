@@ -14,7 +14,7 @@ pip install --upgrade "jax[cuda12_pip]==0.4.26" -f https://storage.googleapis.co
 Download the [Robomimic Dataset](https://robomimic.github.io/docs/datasets/robomimic_v0.1.html) and re-render observations at 64x64. Make sure the robosuite version is consistent across dataset generation and policy evaluation.
 
 
-## Data Collection
+## Data Collection (We only tested the lift cube, but feel free to try out other tasks as well !)
 To collect suboptimal data, first train a noisy imitation learning agent, and then collect rollouts. e.g. failed rollouts from a policy we are evaluating. (We recommend using only 3 trails from the robomimic dataset, the outcome policy obtain from behaviour clone will have a success rate about 20% for lift cube).
 ```
 python3 train_bc.py experiment_folder=FOLDER experiment_name=NAME data=cfg/rm_lift/img n_grad_steps=1000 save_every_step=1000 warmup_steps=10
